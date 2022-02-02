@@ -1,7 +1,7 @@
 <h2 align="center">
 <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4f8.png">
 <br>
-@chariz/express-flash
+modern-flash
 </h2>
 
 **Modern TypeScript rewrite of [express-flash](https://www.npmjs.com/package/express-flash), allowing data such as error/success notifications to be temporarily stored in the session.**
@@ -100,7 +100,7 @@ Accessing the `res.locals.flashes` property is equivalent to calling `req.flash(
 Here’s an example of how it could be used from a Pug template:
 
 ```pug
-if flashes
+if Object.keys(flashes).length > 0
 	.alert(role="alert")
 		for items in Object.values(flashes)
 			for message in items
@@ -114,7 +114,7 @@ Note that `res.locals.flashes` is read-only. Changes made to this object will no
 ```typescript
 import express from "express";
 import session from "express-session";
-import flash from "@chariz/express-flash";
+import flash from "modern-flash";
 
 const app = express();
 
@@ -128,7 +128,7 @@ let getSession = nextSession({
 	// Session config goes here
 });
 
-// Let @chariz/express-flash set itself up in the session:
+// Let modern-flash set itself up in the session:
 app.use(flash());
 
 // An example of how you could use it:
@@ -173,4 +173,4 @@ Developed by [Chariz](https://chariz.com/):
 * [Aarnav Tale (@tale)](https://github.com/tale)
 
 ## License
-Licensed under the Apache License, version 2.0. Refer to [LICENSE.md](https://github.com/chariz/express-flash/blob/main/LICENSE.md).
+Licensed under the Apache License, version 2.0. Refer to [LICENSE.md](https://github.com/chariz/modern-flash/blob/main/LICENSE.md).
