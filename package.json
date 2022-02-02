@@ -1,6 +1,6 @@
 {
 	"name": "modern-flash",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "A modern rewrite of express-flash that also adds support for tinyhttp!",
 	"author": "Adam Demasi <adam@chariz.com>",
 	"contributors": [
