@@ -77,9 +77,10 @@ function flashMiddleware(req: Request, res: Response, next: NextFunction) {
 	next();
 }
 
-// Returns the Express middleware function.
-//
-// You must call `app.use(flash());` before accessing req.flash() or res.locals.flashes.
+/**
+ * You must call `app.use(flash());` before accessing `req.flash()` or `res.locals.flashes`.
+ * @returns Express middleware function
+ */
 export default function flash(): RequestHandler {
 	return flashMiddleware;
 }
