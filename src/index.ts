@@ -26,6 +26,8 @@ declare global {
 	}
 }
 
+import "./tinyhttp.d";
+
 function reqFlash(
 	this: Request,
 	key?: string,

@@ -1,4 +1,4 @@
-import flash, { FlashDictionary, RequestFlash } from ".";
+import { FlashDictionary } from ".";
 
 declare global {
 	namespace Express {
