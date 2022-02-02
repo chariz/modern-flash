@@ -9,11 +9,11 @@
 ## Installation
 
 ```bash
-npm install --save @chariz/express-flash
+npm install --save modern-flash
 # or
-yarn install @chariz/express-flash
+yarn install modern-flash
 # or
-pnpm install @chariz/express-flash
+pnpm install modern-flash
 ```
 
 ## Usage

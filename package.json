@@ -1,7 +1,7 @@
 {
 	"name": "modern-flash",
 	"version": "1.2.1",
-	"description": "A modern rewrite of express-flash that also adds support for tinyhttp!",
+	"description": "A modern rewrite of express-flash allowing data such as error/success notifications to be temporarily stored in the session",
 	"author": "Adam Demasi <adam@chariz.com>",
 	"contributors": [
 		"Aarnav Tale <tale@chariz.com>"
