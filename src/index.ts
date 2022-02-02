@@ -8,10 +8,10 @@ export type FlashDictionary = Record<string, FlashValue[]>;
 
 export interface RequestFlash {
 	// Get all flash keys and values, and delete all keys from the session.
-	(): FlashDictionary | undefined;
+	(): FlashDictionary;
 
 	// Get the flash messages for this key, and delete this key from the session.
-	(key: string): FlashValue[] | undefined;
+	(key: string): FlashValue[];
 
 	// Store new flash messages for this key.
 	(key: string, value: FlashValue | FlashValue[]): void;
@@ -32,7 +32,7 @@ function reqFlash(
 	this: Request,
 	key?: string,
 	value?: FlashValue | FlashValue[]
-): void | FlashValue[] | FlashDictionary | undefined {
+): void | FlashValue[] | FlashDictionary {
 	if (typeof key === "string" && typeof value !== "undefined") {
 		// Store new flash messages for this key.
 		let newValues = Array.isArray(value) ? value : [value];
@@ -46,14 +46,14 @@ function reqFlash(
 		if (result !== undefined) {
 			delete this.session.flash![key];
 		}
-		return result;
+		return result ?? [];
 	}
 	// Get all flash keys and values, and delete all keys from the session.
 	let flashes = this.session.flash;
 	if (flashes !== undefined) {
 		delete this.session.flash;
 	}
-	return flashes;
+	return flashes ?? {};
 }
 
 function flashMiddleware(req: Request, res: Response, next: NextFunction) {
