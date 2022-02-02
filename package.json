@@ -1,6 +1,6 @@
 {
 	"name": "modern-flash",
-	"version": "1.3.0",
+	"version": "1.3.1",
 	"description": "Modern rewrite of express-flash with ESM and tinyhttp support",
 	"author": "Adam Demasi <adam@chariz.com>",
 	"contributors": [
