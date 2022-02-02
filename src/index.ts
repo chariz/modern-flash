@@ -21,7 +21,7 @@ declare global {
 	namespace Express {
 		export interface Request {
 			// The flash function for this request.
-			flash: RequestFlash;
+			readonly flash: RequestFlash;
 		}
 	}
 }
@@ -58,7 +58,9 @@ function reqFlash(
 
 function flashMiddleware(req: Request, res: Response, next: NextFunction) {
 	if (req.flash === undefined) {
-		req.flash = (reqFlash as RequestFlash).bind(req);
+		Object.defineProperty(req, "flash", {
+			get: reqFlash.bind(req)
+		});
 
 		res.locals.flashes = null;
 		res.locals = Object.defineProperty(res.locals, "flashes", {

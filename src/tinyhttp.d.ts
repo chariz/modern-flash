@@ -8,7 +8,7 @@ declare module "@tinyhttp/app" {
 
 	export interface Response extends OutgoingMessage {
 		locals: {
-			flashes: FlashDictionary;
+			readonly flashes: FlashDictionary;
 		};
 	}
 }
