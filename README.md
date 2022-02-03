@@ -11,9 +11,9 @@ modern-flash
 ```bash
 npm install --save modern-flash
 # or
-yarn install modern-flash
+yarn add modern-flash
 # or
-pnpm install modern-flash
+pnpm add modern-flash
 ```
 
 ## Usage
