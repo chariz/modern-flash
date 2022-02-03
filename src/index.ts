@@ -57,8 +57,9 @@ function reqFlash(
 
 function flashMiddleware(req: Request, res: Response, next: NextFunction) {
 	if (req.flash === undefined) {
+		let boundFlash = reqFlash.bind(req);
 		Object.defineProperty(req, "flash", {
-			get: reqFlash.bind(req)
+			get: () => boundFlash
 		});
 
 		res.locals.flashes = null;
