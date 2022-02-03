@@ -1,6 +1,6 @@
 {
 	"name": "modern-flash",
-	"version": "1.3.1",
+	"version": "1.3.2",
 	"description": "Modern TypeScript rewrite of express-flash, allowing data such as error/success notifications to be temporarily stored in the session.",
 	"author": "Adam Demasi <adam@chariz.com>",
 	"contributors": [
