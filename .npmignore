@@ -1,4 +1,5 @@
 src/
 .editorconfig
+.eslintrc.json
 pnpm-lock.yaml
 tsconfig.json
