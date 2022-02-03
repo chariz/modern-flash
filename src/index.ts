@@ -1,4 +1,5 @@
 import type { NextFunction, Request, RequestHandler, Response } from "express";
+import "./tinyhttp.d";
 
 // The type of a flash value.
 export type FlashValue = string;
@@ -25,8 +26,6 @@ declare global {
 		}
 	}
 }
-
-import "./tinyhttp.d";
 
 function reqFlash(
 	this: Request,
