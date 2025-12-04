@@ -1,27 +1,39 @@
 import type { NextFunction, Request, RequestHandler, Response } from "express";
 import "./tinyhttp.d";
 
-// The type of a flash value.
+/** The type of a flash value. */
 export type FlashValue = string;
 
-// The type of the flash dictionary.
+/** The type of the flash dictionary. */
 export type FlashDictionary = Record<string, FlashValue[]>;
 
+/** Overloads of req.flash(). */
 export interface RequestFlash {
-	// Get all flash keys and values, and delete all keys from the session.
+	/**
+	 * Get all flash keys and values, and delete all keys from the session.
+	 * @returns All flash messages in the session, ordered by their key.
+	 */
 	(): FlashDictionary;
 
-	// Get the flash messages for this key, and delete this key from the session.
+	/**
+	 * Get the flash messages for key, and delete key from the session.
+	 * @param key Key to retrieve flash messages for.
+	 * @returns Flash messages in the session matching this key.
+	 */
 	(key: string): FlashValue[];
 
-	// Store new flash messages for this key.
+	/**
+	 * Store new flash messages for this key.
+	 * @param key Key to store message(s) for.
+	 * @param value A single value or array of values to store in the flash key.
+	 */
 	(key: string, value: FlashValue | FlashValue[]): void;
 }
 
 declare global {
 	namespace Express {
 		export interface Request {
-			// The flash function for this request.
+			/** The flash function for this request. */
 			readonly flash: RequestFlash;
 		}
 	}
@@ -78,6 +90,7 @@ function flashMiddleware(req: Request, res: Response, next: NextFunction) {
 }
 
 /**
+ * Attaches modern-flash to the router.
  * You must call `app.use(flash());` before accessing `req.flash()` or `res.locals.flashes`.
  * @returns Express middleware function
  */
