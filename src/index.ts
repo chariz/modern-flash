@@ -31,6 +31,7 @@ export interface RequestFlash {
 }
 
 declare global {
+	// eslint-disable-next-line @typescript-eslint/no-namespace
 	namespace Express {
 		export interface Request {
 			/** The flash function for this request. */
@@ -43,24 +44,26 @@ function reqFlash(
 	this: Request,
 	key?: string,
 	value?: FlashValue | FlashValue[]
+// eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 ): void | FlashValue[] | FlashDictionary {
-	if (typeof key === "string" && typeof value !== "undefined") {
+	if (typeof key === "string" && value !== undefined) {
 		// Store new flash messages for this key.
-		let newValues = Array.isArray(value) ? value : [value];
-		let flashes = this.session.flash ?? {};
+		const newValues = Array.isArray(value) ? value : [value];
+		const flashes = this.session.flash ?? {};
 		flashes[key] = [...(flashes[key] ?? []), ...newValues];
 		this.session.flash = flashes;
 		return;
 	} else if (typeof key === "string") {
 		// Get the flash messages for this key, and delete this key from the session.
-		let result = this.session.flash?.[key];
+		const result = this.session.flash?.[key];
 		if (result !== undefined) {
+			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 			delete this.session.flash![key];
 		}
 		return result ?? [];
 	}
 	// Get all flash keys and values, and delete all keys from the session.
-	let flashes = this.session.flash;
+	const flashes = this.session.flash;
 	if (flashes !== undefined) {
 		delete this.session.flash;
 	}
@@ -69,7 +72,7 @@ function reqFlash(
 
 function flashMiddleware(req: Request, res: Response, next: NextFunction) {
 	if (req.flash === undefined) {
-		let boundFlash = reqFlash.bind(req);
+		const boundFlash = reqFlash.bind(req);
 		Object.defineProperty(req, "flash", {
 			get: () => boundFlash
 		});
@@ -80,7 +83,7 @@ function flashMiddleware(req: Request, res: Response, next: NextFunction) {
 				// Store the flashes in a private temp variable so this local can be read multiple times
 				// per request as needed.
 				if (res._flashes === undefined) {
-					res._flashes = req.flash() ?? null;
+					res._flashes = req.flash()!;
 				}
 				return res._flashes;
 			}
