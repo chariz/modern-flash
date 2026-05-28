@@ -50,7 +50,6 @@
 		"@types/express-session": "^1.18.2",
 		"@types/node": "^24.10.1",
 		"@vitest/coverage-v8": "4.0.15",
-		"@vitest/ui": "^4.0.15",
 		"eslint": "^9.39.1",
 		"eslint-config-chariz": "^2.1.0",
 		"np": "^10.2.0",
