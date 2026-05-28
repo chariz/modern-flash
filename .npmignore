@@ -2,4 +2,5 @@ src/
 .editorconfig
 .eslintrc.json
 pnpm-lock.yaml
+pnpm-workspace.yaml
 tsconfig.json
